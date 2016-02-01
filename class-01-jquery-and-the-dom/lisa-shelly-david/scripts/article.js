@@ -22,7 +22,8 @@ Article.prototype.toHtml = function() {
   $newArticle.attr('data-category', this.category);
 
   //author
-  $newArticle.find('address').attr('a', this.author);
+  // $('address').html('Lisa is cool');
+  // $newArticle.html('address',this.author);
 
 //author URL
   $newArticle.find('address a').attr('href', this.authorUrl);
