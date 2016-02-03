@@ -1,5 +1,5 @@
 .site-header {
-  background: #FFEAAA;
+  background: lightblue;
 }
 
 /* DONE: Float the main header to the left, to make room for the hamburger menu. */
@@ -8,15 +8,13 @@
   padding: 0 0 .2em 1em;
 }
 
-/* TODO: Add styles for the icon-menu class. It should be bigger, and off to the right. */
+/* Done: Add styles for the icon-menu class. It should be bigger, and off to the right. */
 .icon-menu {
-  /*display:flex;*/
-  justify-content: flex-end;
-  width: 2.5em;
+  margin-right: 1em;
+  width: 1.5em;
 }
 
 .main-nav {
-  display:flex;
   padding: 0.1em;
 }
 
@@ -64,6 +62,13 @@
 
 @media only screen and (min-width:640px) {
   .icon-menu {
+    display: none;
+  }
+  .main-nav ul {
+    display: flex;
+    flex-direction: row;
+  }
+  .main-nav:hover ul {
     display: none;
   }
 }
