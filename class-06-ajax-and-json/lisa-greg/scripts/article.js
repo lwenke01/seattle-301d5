@@ -56,16 +56,13 @@ Article.fetchAll = function() {
         console.log('xhr is ' + xhr);
         var eTag = xhr.getResponseHeader('eTag');
         if (!localStorage.eTag || eTag !== localStorage.eTag) {
-          localStorage.eTag = eTag;
+          localStorage.setItem('eTag' , JSON.stringify(eTag));
         } else {
         Article.loadAll(JSON.parse(localStorage.rawData));
         }
       }
     });
-      Article.loadAll(JSON.parse(localStorage.rawData));//TODO: What do we pass in here to the .loadAll function?
-
-
-
+      Article.loadAll(JSON.parse(localStorage.rawData));
       articleView.initIndexPage();
       console.log(); //TODO: What method do we call to render the index page?
   } else {
