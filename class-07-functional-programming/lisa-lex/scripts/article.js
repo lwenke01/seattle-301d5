@@ -88,7 +88,7 @@ Article.allAuthors = function() {
 };
 
 Article.numWordsByAuthor = function() {
-  // TODO: Transform each author string into an object with 2 properties: One for
+  // DONE: Transform each author string into an object with 2 properties: One for
   // the author's name, and one for the total number of words across all articles written by the specified author.
   return Article.allAuthors().map(function(author) {
     var count = Article.all.filter(function(ele, idx) {
