@@ -91,7 +91,19 @@ Article.numWordsByAuthor = function() {
   // TODO: Transform each author string into an object with 2 properties: One for
   // the author's name, and one for the total number of words across all articles written by the specified author.
   return Article.allAuthors().map(function(author) {
+    var count = Article.all.filter(function(ele, idx) {
+      return ele.author === author;
+    })
+    .map(function(article) {
+      return article.body.match(/\b\w+/g).length;
+    })
+    .reduce(function(a ,b) {
+      return a + b;
+    })
     return {
+      authorName: author,
+      wordCount: count,
+
       // someKey: someValOrFunctionCall().map(...).reduce(...), ...
     }
   })
