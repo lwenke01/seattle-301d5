@@ -101,10 +101,8 @@ Article.numWordsByAuthor = function() {
       return a + b;
     })
     return {
-      authorName: author,
-      wordCount: count,
-
-      // someKey: someValOrFunctionCall().map(...).reduce(...), ...
+      name: author,
+      numWords: count
     }
   })
 };
