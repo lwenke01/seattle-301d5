@@ -20,6 +20,7 @@ function Article (opts) {
 
 Article.all = [];
 
+
 Article.prototype.toHtml = function() {
   var template = Handlebars.compile($('#article-template').text());
 
@@ -75,7 +76,9 @@ Article.numWordsAll = function() {
 
 // TODO: Chain together a `map` and a `reduce` call to produce an array of unique author names.
 Article.allAuthors = function() {
-  return // Don't forget to read the docs on map and reduce!
+  return Article.all.map(function(article) {
+    console.log(article.author);
+  }) // Don't forget to read the docs on map and reduce!
 };
 
 Article.numWordsByAuthor = function() {
