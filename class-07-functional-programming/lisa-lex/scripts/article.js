@@ -85,13 +85,6 @@ Article.allAuthors = function() {
     }
     return names;
   }, []);
-
-
-
-  // .sort().filter(function(ele, pos, arr) {
-  //   return arr.indexOf(ele) === pos;
-  // });
-
 };
 
 Article.numWordsByAuthor = function() {
