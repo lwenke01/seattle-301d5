@@ -19,7 +19,7 @@
     return template(this);
   };
 
-  // TODO: Set up a DB table for articles.
+  //DONE: Set up a DB table for articles.
   Article.createTable = function(callback) {
     webDB.execute(
       'CREATE TABLE IF NOT EXIST articles (' +
@@ -35,29 +35,28 @@
       function(result) {
         console.log('Successfully set up the articles table.', result);
         if (callback) callback();
+
       }
     );
   };
 
-  // TODO: Correct the SQL to delete all records from the articles table.
+  // DONE: Correct the SQL to delete all records from the articles table.
   Article.truncateTable = function(callback) {
     webDB.execute(
-      // 'DELETE ...;',
-      'DELETE FROM articles;'
+      'DELETE FROM articles;',
       function(result) {
-        console.log('deleted records, new table')
+        console.log('deleted records, new table', result);
+
       }
-      // callback
     );
   };
 
-
-  // TODO: Insert an article instance into the database:
+  // DONE: Insert an article instance into the database:
   Article.prototype.insertRecord = function(callback) {
     webDB.execute(
       [
         {
-          'sql': 'INSERT INTO articles (title, author, authorURL, category, publishedOn, body) VALUES (?, ?, ?, ?, ?);',
+          'sql': 'INSERT INTO articles (title, author, authorURL, category, publishedOn, body) VALUES (?, ?, ?, ?, ?, ?);',
           'data': [this.title, this.author, this.authorURL, this.category, this.publishedOn, this.body],
         }
       ],
@@ -70,7 +69,8 @@
     webDB.execute(
       [
         {
-          /* ... */
+          'sql': 'DELETE FROM articles WHERE id=?;',
+          'data': [this.id]
         }
       ],
       callback
