@@ -76,17 +76,13 @@
     <footer>
       &copy; 2015 Code Fellows | Static Blog | Happy Ipsum!
     </footer>
-
     <script src="/vendor/scripts/jquery-2.1.4.js"></script>
     <script src="/vendor/scripts/handlebars.js"></script>
     <script src="/vendor/scripts/marked.js"></script>
     <script src="/scripts/article.js"></script>
     <script src="/scripts/articleView.js"></script>
     <script>
-      // DONE: The fetchAll method call now requires a callback parameter.
-      // What do we want to run WHEN the fetch is done?
-      Article.fetchAll(); // Add an argument to the function call.
-      articleView.initAdminPage();
-    </script>
+      Article.fetchAll(initIndexPage);
+      </script>
   </body>
 </html>
