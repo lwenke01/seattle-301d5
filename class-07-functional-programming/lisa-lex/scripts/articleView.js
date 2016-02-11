@@ -1,8 +1,6 @@
-// DONE: Wrap the entire contents of this file in an IIFE.
-// Pass in to the IIFE a module, upon which objects can be attached for later access.
+
 (function(module) {
 
-  // Configure a view object, to hold all our functions for dynamic updates and article-related event handlers.
   var articleView = {};
 
   articleView.populateFilters = function() {
@@ -80,7 +78,6 @@
     var article;
     $('#articles').empty();
 
-    // Instantiate an article based on what's in the form fields:
     article = new Article({
       title: $('#article-title').val(),
       author: $('#article-author').val(),
@@ -96,7 +93,6 @@
       hljs.highlightBlock(block);
     });
 
-    // Export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
     $('#export-field').show();
     $('#article-json').val(JSON.stringify(article) + ',');
   };
@@ -114,13 +110,9 @@
   };
 
   articleView.initAdminPage = function() {
-    // DONE: Call the Handlebars `.compile` function, which will return a function for you to use where needed.
-    var template = Handlebars.compile($('#author-template').text());
+      var template = Handlebars.compile($('#author-template').text());
 
-    // DONE: We use `forEach` here because we are relying on the side-effects of the callback function:
-    // appending to the DOM.
-    // The callback is not required to return anything.
-    Article.numWordsByAuthor().forEach(function(stat) {
+      Article.numWordsByAuthor().forEach(function(stat) {
       $('.author-stats').append(template(stat));
     })
 
