@@ -24,7 +24,7 @@
     webDB.execute(
       'CREATE TABLE IF NOT EXIST articles (' +
       'id INTEGER PRIMARY KEY, ' +
-      'title TEXT NOT NULL, ' +
+      'title VARCHAR(255) NOT NULL, ' +
       'author VARCHAR(255) NOT NULL, ' +
       'authorURL VARCHAR(255) NOT NULL, ' +
       'category VARCHAR(20) NOT NULL, ' +
