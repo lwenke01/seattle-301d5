@@ -1,5 +1,4 @@
-// DONE: Wrap the entire contents of this file in an IIFE.
-// Pass in to the IIFE a module, upon which objects can be attached for later access.
+
 (function(module) {
 
   function Article (opts) {
@@ -31,15 +30,15 @@ Article.all = rawData.map(function(ele) {
   });
 };
 
-  Article.fetchAll = function(module) {
+  Article.fetchAll = function(getData) {
   if (localStorage.rawData) {
     Article.loadAll(JSON.parse(localStorage.rawData));
-    articleView.initIndexPage();
+    getData();
   } else {
     $.getJSON('/data/hackerIpsum.json', function(rawData) {
       Article.loadAll(rawData);
-      localStorage.rawData = JSON.stringify(rawData); // Cache the json, so we don't need to request it next time.
-      articleView.initIndexPage();
+      localStorage.rawData = JSON.stringify(rawData);
+      getData();
     });
   }
 };
@@ -49,14 +48,14 @@ Article.all = rawData.map(function(ele) {
     return article.body.match(/\b\w+/g).length;
   })
   .reduce(function(a, b) {
-    return a + b;// Sum up all the values in the collection
+    return a + b;
   })
 };
 
   Article.allAuthors = function() {
   return Article.all.map(function(article) {
     return article.author;
-  }) // Don't forget to read the docs on map and reduce!
+  })
   .reduce(function(names, name) {
     if(names.indexOf(name) === -1) {
       names.push(name);
